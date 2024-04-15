@@ -1,3 +1,7 @@
+using System.Globalization;
+using Ac3;
+using CsvHelper;
+
 namespace M03.UF5.AC3
 {
     internal static class Program
@@ -12,6 +16,18 @@ namespace M03.UF5.AC3
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+
+            List<ConsumAigua> consumAiguas = new List<ConsumAigua>();
+            consumAiguas = ReadCsv();
+            XMLHelper.CreateXMLFileWithLINQ(consumAiguas);
+
+        }
+        private static List<ConsumAigua> ReadCsv()
+        {
+            using var reader = new StreamReader("Consum_d_aigua_a_Catalunya_per_comarques_20240402.csv");
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            var records = csv.GetRecords<ConsumAigua>();
+            return records.ToList();
         }
     }
 }
