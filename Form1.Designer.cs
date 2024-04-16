@@ -44,18 +44,20 @@
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
+            domesticBaixLabel = new Label();
+            domesticAltLabel = new Label();
+            consumLabel = new Label();
+            poblacioLabel = new Label();
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
             label8 = new Label();
-            label12 = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
             netejar = new Button();
             guardar = new Button();
+            dataGridView1 = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -125,7 +127,7 @@
             // 
             activitatsBox.Location = new Point(131, 134);
             activitatsBox.Name = "activitatsBox";
-            activitatsBox.Size = new Size(100, 23);
+            activitatsBox.Size = new Size(143, 23);
             activitatsBox.TabIndex = 8;
             // 
             // label5
@@ -149,17 +151,17 @@
             // 
             // poblacioBox
             // 
-            poblacioBox.Location = new Point(232, 48);
+            poblacioBox.Location = new Point(300, 48);
             poblacioBox.Name = "poblacioBox";
-            poblacioBox.Size = new Size(100, 23);
+            poblacioBox.Size = new Size(119, 23);
             poblacioBox.TabIndex = 5;
             // 
             // comarcaBox
             // 
             comarcaBox.FormattingEnabled = true;
-            comarcaBox.Location = new Point(111, 48);
+            comarcaBox.Location = new Point(131, 48);
             comarcaBox.Name = "comarcaBox";
-            comarcaBox.Size = new Size(103, 23);
+            comarcaBox.Size = new Size(143, 23);
             comarcaBox.TabIndex = 4;
             // 
             // anyBox
@@ -168,14 +170,14 @@
             anyBox.Items.AddRange(new object[] { "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046", "2047", "2048", "2049", "2050" });
             anyBox.Location = new Point(15, 48);
             anyBox.Name = "anyBox";
-            anyBox.Size = new Size(71, 23);
+            anyBox.Size = new Size(100, 23);
             anyBox.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(232, 30);
+            label3.Location = new Point(300, 30);
             label3.Name = "label3";
             label3.Size = new Size(53, 15);
             label3.TabIndex = 2;
@@ -185,7 +187,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label2.Location = new Point(111, 30);
+            label2.Location = new Point(131, 30);
             label2.Name = "label2";
             label2.Size = new Size(55, 15);
             label2.TabIndex = 1;
@@ -204,26 +206,70 @@
             // groupBox2
             // 
             groupBox2.BackColor = SystemColors.ControlLight;
-            groupBox2.Controls.Add(label15);
-            groupBox2.Controls.Add(label14);
-            groupBox2.Controls.Add(label13);
-            groupBox2.Controls.Add(label12);
+            groupBox2.Controls.Add(domesticBaixLabel);
+            groupBox2.Controls.Add(domesticAltLabel);
+            groupBox2.Controls.Add(consumLabel);
+            groupBox2.Controls.Add(poblacioLabel);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(label10);
             groupBox2.Controls.Add(label9);
             groupBox2.Controls.Add(label8);
             groupBox2.Location = new Point(595, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(364, 185);
+            groupBox2.Size = new Size(449, 185);
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             groupBox2.Text = "Estadístiques";
+            // 
+            // domesticBaixLabel
+            // 
+            domesticBaixLabel.AutoSize = true;
+            domesticBaixLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            domesticBaixLabel.ForeColor = Color.Blue;
+            domesticBaixLabel.Location = new Point(332, 143);
+            domesticBaixLabel.Name = "domesticBaixLabel";
+            domesticBaixLabel.Size = new Size(27, 15);
+            domesticBaixLabel.TabIndex = 21;
+            domesticBaixLabel.Text = "----";
+            // 
+            // domesticAltLabel
+            // 
+            domesticAltLabel.AutoSize = true;
+            domesticAltLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            domesticAltLabel.ForeColor = Color.Blue;
+            domesticAltLabel.Location = new Point(332, 105);
+            domesticAltLabel.Name = "domesticAltLabel";
+            domesticAltLabel.Size = new Size(27, 15);
+            domesticAltLabel.TabIndex = 20;
+            domesticAltLabel.Text = "----";
+            // 
+            // consumLabel
+            // 
+            consumLabel.AutoSize = true;
+            consumLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            consumLabel.ForeColor = Color.Blue;
+            consumLabel.Location = new Point(332, 69);
+            consumLabel.Name = "consumLabel";
+            consumLabel.Size = new Size(21, 15);
+            consumLabel.TabIndex = 19;
+            consumLabel.Text = "00";
+            // 
+            // poblacioLabel
+            // 
+            poblacioLabel.AutoSize = true;
+            poblacioLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            poblacioLabel.ForeColor = Color.Blue;
+            poblacioLabel.Location = new Point(332, 33);
+            poblacioLabel.Name = "poblacioLabel";
+            poblacioLabel.Size = new Size(27, 15);
+            poblacioLabel.TabIndex = 18;
+            poblacioLabel.Text = "----";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(21, 134);
+            label11.Location = new Point(52, 137);
             label11.Name = "label11";
             label11.Size = new Size(218, 15);
             label11.TabIndex = 17;
@@ -233,7 +279,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(30, 101);
+            label10.Location = new Point(61, 104);
             label10.Name = "label10";
             label10.Size = new Size(209, 15);
             label10.TabIndex = 16;
@@ -243,7 +289,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(100, 66);
+            label9.Location = new Point(131, 69);
             label9.Name = "label9";
             label9.Size = new Size(139, 15);
             label9.TabIndex = 15;
@@ -253,55 +299,11 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(108, 30);
+            label8.Location = new Point(139, 33);
             label8.Name = "label8";
             label8.Size = new Size(131, 15);
             label8.TabIndex = 14;
             label8.Text = "Població > 20.000 hab:";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.Blue;
-            label12.Location = new Point(301, 30);
-            label12.Name = "label12";
-            label12.Size = new Size(27, 15);
-            label12.TabIndex = 18;
-            label12.Text = "----";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.Blue;
-            label13.Location = new Point(290, 66);
-            label13.Name = "label13";
-            label13.Size = new Size(38, 15);
-            label13.TabIndex = 19;
-            label13.Text = "00,00";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.ForeColor = Color.Blue;
-            label14.Location = new Point(301, 102);
-            label14.Name = "label14";
-            label14.Size = new Size(27, 15);
-            label14.TabIndex = 20;
-            label14.Text = "----";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.ForeColor = Color.Blue;
-            label15.Location = new Point(301, 140);
-            label15.Name = "label15";
-            label15.Size = new Size(27, 15);
-            label15.TabIndex = 21;
-            label15.Text = "----";
             // 
             // netejar
             // 
@@ -311,6 +313,7 @@
             netejar.TabIndex = 15;
             netejar.Text = "Netejar";
             netejar.UseVisualStyleBackColor = true;
+            netejar.Click += netejar_Click;
             // 
             // guardar
             // 
@@ -320,12 +323,25 @@
             guardar.TabIndex = 16;
             guardar.Text = "Guardar";
             guardar.UseVisualStyleBackColor = true;
+            guardar.Click += guardar_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(173, 243);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(723, 384);
+            dataGridView1.TabIndex = 17;
+            dataGridView1.CellClick += dataGridView1_CellContentClick;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1056, 450);
+            ClientSize = new Size(1056, 656);
+            Controls.Add(dataGridView1);
             Controls.Add(guardar);
             Controls.Add(netejar);
             Controls.Add(groupBox2);
@@ -336,6 +352,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -361,11 +378,12 @@
         private Label label8;
         private Label label11;
         private Label label10;
-        private Label label12;
-        private Label label15;
-        private Label label14;
-        private Label label13;
+        private Label poblacioLabel;
+        private Label domesticBaixLabel;
+        private Label domesticAltLabel;
+        private Label consumLabel;
         private Button netejar;
         private Button guardar;
+        private DataGridView dataGridView1;
     }
 }
