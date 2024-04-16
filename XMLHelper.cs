@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using CsvHelper;
 using Microsoft.VisualBasic.FileIO;
 
-namespace Ac3
+namespace M03.UF5.AC3
 {
     public class XMLHelper
     {
-
         public static void CreateXMLFileWithLINQ(List<ConsumAigua> list)
         {
             XDocument xmlDoc = new XDocument(
@@ -34,40 +32,8 @@ namespace Ac3
 
             string xmlFilePath = "AguasXML.xml";
             xmlDoc.Save(xmlFilePath);
+            Console.WriteLine($"XML file saved: {xmlFilePath}");
         }
-
-        public static void ReadXMLFile()
-        {
-            XDocument xmlDoc = XDocument.Load("AguasXML.xml");
-            var query = from item in xmlDoc.Descendants("row")
-                        select new
-                        {
-                            Any = item.Element("Any").Value,
-                            Codi_comarca = item.Element("Codi_comarca").Value,
-                            Comarca = item.Element("Comarca").Value,
-                            Població = item.Element("Població").Value,
-                            Domèstic_xarxa = item.Element("Domèstic_xarxa").Value,
-                            Activitats_econòmiques_i_fonts_pròpies = item.Element("Activitats_econòmiques_i_fonts_pròpies").Value,
-                            Total = item.Element("Total").Value,
-                            Consum_domèstic_per_càpita = item.Element("Consum_domèstic_per_càpita").Value
-                        };
-
-            foreach (var item in query)
-            {
-                Console.WriteLine("Any: " + item.Any);
-                Console.WriteLine("Codi_comarca: " + item.Codi_comarca);
-                Console.WriteLine("Comarca: " + item.Comarca);
-                Console.WriteLine("Població: " + item.Població);
-                Console.WriteLine("Domèstic_xarxa: " + item.Domèstic_xarxa);
-                Console.WriteLine("Activitats_econòmiques_i_fonts_pròpies: " + item.Activitats_econòmiques_i_fonts_pròpies);
-                Console.WriteLine("Total: " + item.Total);
-                Console.WriteLine("Consum_domèstic_per_càpita: " + item.Consum_domèstic_per_càpita);
-                Console.WriteLine();
-            }
-        }
-
-
-
         public static DataTable LeerCSV(string rutaArchivo)
         {
             DataTable dataTable = new DataTable();
@@ -109,5 +75,15 @@ namespace Ac3
             return dataTable;
         }
 
+        public static List<ConsumAigua> ReadCsv()
+        {
+            List<ConsumAigua> consumAiguas = new List<ConsumAigua>();
+            using (var reader = new StreamReader(@"..\..\..\Consum_d_aigua_a_Catalunya_per_comarques_20240402.csv"))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                consumAiguas = csv.GetRecords<ConsumAigua>().ToList();
+            }
+            return consumAiguas;
+        }
     }
 }

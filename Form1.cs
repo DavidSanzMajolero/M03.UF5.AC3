@@ -4,6 +4,8 @@ using System.Xml.Linq;
 using Ac3;
 using CsvHelper.Configuration;
 using CsvHelper;
+using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace M03.UF5.AC3
 {
@@ -154,7 +156,99 @@ namespace M03.UF5.AC3
 
         private void guardar_Click(object sender, EventArgs e)
         {
-            // Obtener los valores de los TextBox
+
+            int year, poblacion, domesticXarxa2, activities, total2;
+            double consumPerCapita2;
+            string comarca1;
+
+            errorProvider1.Clear();
+
+            try
+            {
+                year = int.Parse(anyBox.Text);
+                if (year < 2012 || year > 2050) throw new Exception();
+            }
+            catch (Exception)
+            {
+                errorProvider1.SetError(anyBox, "Ingresa el año correctamente");
+                return;
+            }
+
+            try
+            {
+                comarca1 = comarcaBox.Text;
+                if (comarca1 == string.Empty) throw new Exception();
+
+            }
+            catch (Exception)
+            {
+                errorProvider1.SetError(comarcaBox, "Ingresa la comarca correctamente.");
+                return;
+            }
+
+            try
+            {
+                poblacion = int.Parse(poblacioBox.Text);
+                if (poblacion < 0) throw new Exception();
+                errorProvider1.Clear();
+            }
+            catch (Exception)
+            {
+                errorProvider1.SetError(poblacioBox, "La poblacion ha de ser un numero entero");
+                return;
+            }
+
+            try
+            {
+                domesticXarxa2 = int.Parse(domesticBox.Text);
+                if (domesticXarxa2 < 0) throw new Exception();
+                errorProvider1.Clear();
+            }
+            catch (Exception)
+            {
+                errorProvider1.SetError(domesticBox, "'Domèstic xarxa' ha de ser un numero entero");
+                return;
+            }
+
+            try
+            {
+                activities = int.Parse(activitatsBox.Text);
+                if (activities < 0)
+                    throw new Exception();
+                errorProvider1.Clear();
+            }
+            catch (Exception)
+            {
+                errorProvider1.SetError(activitatsBox, "'Gestió de dades demogràfiques de gestió' ha de ser un numero entero");
+                return;
+            }
+
+            try
+            {
+                consumPerCapita2 = double.Parse(consumBox.Text);
+                if (consumPerCapita2 < 0) throw new Exception();
+                errorProvider1.Clear();
+            }
+            catch (Exception)
+            {
+                errorProvider1.SetError(consumBox, "'Consum domèstic per capità'  ha de ser un numero entero ");
+                return;
+            }
+
+            try
+            {
+                total2 = int.Parse(totalBox.Text);
+                if (total2 < 0)
+                    throw new Exception();
+                errorProvider1.Clear();
+            }
+            catch (Exception)
+            {
+                errorProvider1.SetError(totalBox, "'Total' ha de ser un numero entero");
+                return;
+            }
+
+
             string any = anyBox.Text;
             string comarca = comarcaBox.Text;
             string poblacio = poblacioBox.Text;
@@ -163,14 +257,13 @@ namespace M03.UF5.AC3
             string total = totalBox.Text;
             string consumPerCapita = consumBox.Text;
 
-            // Verificar si la comarca está en el diccionario y obtener el código de comarca correspondiente
             int codiComarca;
             if (comarcaToCodiComarca.TryGetValue(comarca, out codiComarca))
             {
                 var records = new List<ConsumAigua>
                 {
-                    new ConsumAigua 
-                    { 
+                    new ConsumAigua
+                    {
                         Any = int.Parse(any),
                         Codi_comarca = codiComarca,
                         Comarca = comarca,
@@ -190,6 +283,8 @@ namespace M03.UF5.AC3
             {
                 MessageBox.Show("La comarca ingresada no tiene un código de comarca asociado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
         private static void AppendCsv(List<ConsumAigua> records)
         {
@@ -200,7 +295,7 @@ namespace M03.UF5.AC3
             using var stream = File.Open("Consum_d_aigua_a_Catalunya_per_comarques_20240402.csv", FileMode.Append);
             using var writer = new StreamWriter(stream);
             using var csvWriter = new CsvWriter(writer, config);
-            
+
             csvWriter.WriteRecords(records);
         }
     }

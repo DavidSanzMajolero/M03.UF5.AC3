@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
             totalBox = new TextBox();
             consumBox = new TextBox();
@@ -55,9 +56,11 @@
             netejar = new Button();
             guardar = new Button();
             dataGridView1 = new DataGridView();
+            errorProvider1 = new ErrorProvider(components);
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -336,6 +339,10 @@
             dataGridView1.CellClick += dataGridView1_CellContentClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -353,6 +360,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -385,5 +393,6 @@
         private Button netejar;
         private Button guardar;
         private DataGridView dataGridView1;
+        private ErrorProvider errorProvider1;
     }
 }
