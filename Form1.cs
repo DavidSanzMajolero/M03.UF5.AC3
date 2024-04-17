@@ -37,11 +37,11 @@ namespace M03.UF5.AC3
                            Any = (int)row.Element("Any"),
                            Codi_comarca = (int)row.Element("Codi_comarca"),
                            Comarca = (string)row.Element("Comarca"),
-                           Poblacio = (int)row.Element("Població"),
-                           Domestic_xarxa = (double)row.Element("Domèstic_xarxa"),
-                           Activitats_economiques_i_fonts_propies = (double)row.Element("Activitats_econòmiques_i_fonts_pròpies"),
+                           Poblacio = (int)row.Element("PoblaciÃ³"),
+                           Domestic_xarxa = (double)row.Element("DomÃ¨stic_xarxa"),
+                           Activitats_economiques_i_fonts_propies = (double)row.Element("Activitats_econÃ²miques_i_fonts_prÃ²pies"),
                            Total = (double)row.Element("Total"),
-                           Consum_domestic_per_capital = (double)row.Element("Consum_domèstic_per_càpita")
+                           Consum_domestic_per_capital = (double)row.Element("Consum_domÃ¨stic_per_cÃ pita")
                        };
             foreach (var row in rows)
             {
@@ -79,8 +79,8 @@ namespace M03.UF5.AC3
             XDocument xDocument = XDocument.Load("AguasXML.xml");
             var comarcaAlt = (from comarca in xDocument.Descendants("row")
                               where comarca.Element("Comarca").Value == nomComarca
-                              orderby Convert.ToDouble(comarca.Element("Consum_domèstic_per_càpita").Value) descending
-                              select comarca.Element("Consum_domèstic_per_càpita").Value).FirstOrDefault();
+                              orderby Convert.ToDouble(comarca.Element("Consum_domÃ¨stic_per_cÃ pita").Value) descending
+                              select comarca.Element("Consum_domÃ¨stic_per_cÃ pita").Value).FirstOrDefault();
 
             if (double.Parse(comarcaAlt) == double.Parse(dataGridView1.CurrentRow.Cells[7].Value.ToString()))
             {
@@ -94,8 +94,8 @@ namespace M03.UF5.AC3
 
             var comarcaBaix = (from comarca in xDocument.Descendants("row")
                                where comarca.Element("Comarca").Value == nomComarca
-                               orderby Convert.ToDouble(comarca.Element("Consum_domèstic_per_càpita").Value)
-                               select comarca.Element("Consum_domèstic_per_càpita").Value).FirstOrDefault();
+                               orderby Convert.ToDouble(comarca.Element("Consum_domÃ¨stic_per_cÃ pita").Value)
+                               select comarca.Element("Consum_domÃ¨stic_per_cÃ pita").Value).FirstOrDefault();
 
             if (double.Parse(comarcaBaix) == double.Parse(dataGridView1.CurrentRow.Cells[7].Value.ToString()))
             {
@@ -111,47 +111,47 @@ namespace M03.UF5.AC3
         Dictionary<string, int> comarcaToCodiComarca = new Dictionary<string, int>()
         {
             { "ALT CAMP, L'", 1 },
-            { "ALT EMPORDÀ, L'", 2 },
-            { "ALT PENEDÈS, L'", 3 },
+            { "ALT EMPORDÃ€, L'", 2 },
+            { "ALT PENEDÃˆS, L'", 3 },
             { "ALT URGELL, L'", 4 },
-            { "ALTA RIBAGORÇA, L'", 5 },
+            { "ALTA RIBAGORÃ‡A, L'", 5 },
             { "ANOIA, L'", 6 },
             { "BAGES, EL", 7 },
             { "BAIX CAMP, EL", 8 },
             { "BAIX EBRE, EL", 9 },
-            { "BAIX EMPORDÀ, EL", 10 },
+            { "BAIX EMPORDÃ€, EL", 10 },
             { "BAIX LLOBREGAT, EL", 11 },
-            { "BAIX PENEDÈS, EL", 12 },
-            { "BARCELONÈS, EL", 13 },
-            { "BERGUEDÀ, EL", 14 },
+            { "BAIX PENEDÃˆS, EL", 12 },
+            { "BARCELONÃˆS, EL", 13 },
+            { "BERGUEDÃ€, EL", 14 },
             { "CERDANYA, LA", 15 },
-            { "CONCA DE BARBERÀ, LA", 16 },
+            { "CONCA DE BARBERÃ€, LA", 16 },
             { "GARRAF, EL", 17 },
             { "GARRIGUES, LES", 18 },
             { "GARROTXA, LA", 19 },
-            { "GIRONÈS, EL", 20 },
+            { "GIRONÃˆS, EL", 20 },
             { "MARESME, EL", 21 },
-            { "MONTSIÀ, EL", 22 },
+            { "MONTSIÃ€, EL", 22 },
             { "NOGUERA, LA", 23 },
             { "OSONA", 24 },
-            { "PALLARS JUSSÀ, EL", 25 },
-            { "PALLARS SOBIRÀ, EL", 26 },
+            { "PALLARS JUSSÃ€, EL", 25 },
+            { "PALLARS SOBIRÃ€, EL", 26 },
             { "PLA D'URGELL, EL", 27 },
             { "PLA DE L'ESTANY, EL", 28 },
             { "PRIORAT, EL", 29 },
             { "RIBERA D'EBRE, LA", 30 },
-            { "RIPOLLÈS, EL", 31 },
+            { "RIPOLLÃˆS, EL", 31 },
             { "SEGARRA, LA", 32 },
-            { "SEGRIÀ, EL", 33 },
+            { "SEGRIÃ€, EL", 33 },
             { "SELVA, LA", 34 },
-            { "SOLSONÈS, EL", 35 },
-            { "TARRAGONÈS, EL", 36 },
+            { "SOLSONÃˆS, EL", 35 },
+            { "TARRAGONÃˆS, EL", 36 },
             { "TERRA ALTA", 37 },
             { "URGELL, L'", 38 },
             { "VAL D'ARAN, LA", 39 },
-            { "VALLÈS OCCIDENTAL, EL", 40 },
-            { "VALLÈS ORIENTAL, EL", 41 },
-            { "Moianès", 42 }
+            { "VALLÃˆS OCCIDENTAL, EL", 40 },
+            { "VALLÃˆS ORIENTAL, EL", 41 },
+            { "MoianÃ¨s", 42 }
         };
 
         private void guardar_Click(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace M03.UF5.AC3
             }
             catch (Exception)
             {
-                errorProvider1.SetError(anyBox, "Ingresa el año correctamente");
+                errorProvider1.SetError(anyBox, "Ingresa el aÃ±o correctamente");
                 return;
             }
 
@@ -206,7 +206,7 @@ namespace M03.UF5.AC3
             }
             catch (Exception)
             {
-                errorProvider1.SetError(domesticBox, "'Domèstic xarxa' ha de ser un numero entero");
+                errorProvider1.SetError(domesticBox, "'DomÃ¨stic xarxa' ha de ser un numero entero");
                 return;
             }
 
@@ -219,7 +219,7 @@ namespace M03.UF5.AC3
             }
             catch (Exception)
             {
-                errorProvider1.SetError(activitatsBox, "'Gestió de dades demogràfiques de gestió' ha de ser un numero entero");
+                errorProvider1.SetError(activitatsBox, "'GestiÃ³ de dades demogrÃ fiques de gestiÃ³' ha de ser un numero entero");
                 return;
             }
 
@@ -231,7 +231,7 @@ namespace M03.UF5.AC3
             }
             catch (Exception)
             {
-                errorProvider1.SetError(consumBox, "'Consum domèstic per capità'  ha de ser un numero entero ");
+                errorProvider1.SetError(consumBox, "'Consum domÃ¨stic per capitÃ '  ha de ser un numero entero ");
                 return;
             }
 
@@ -277,11 +277,11 @@ namespace M03.UF5.AC3
 
                 AppendCsv(records);
 
-                MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Datos guardados correctamente.", "Ã‰xito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("La comarca ingresada no tiene un código de comarca asociado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("La comarca ingresada no tiene un cÃ³digo de comarca asociado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -292,7 +292,7 @@ namespace M03.UF5.AC3
             {
                 HasHeaderRecord = false,
             };
-            using var stream = File.Open("Consum_d_aigua_a_Catalunya_per_comarques_20240402.csv", FileMode.Append);
+            using var stream = File.Open(@"..\..\..\Consum_d_aigua_a_Catalunya_per_comarques_20240402.csv", FileMode.Append);
             using var writer = new StreamWriter(stream);
             using var csvWriter = new CsvWriter(writer, config);
 
